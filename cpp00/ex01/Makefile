@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+         #
+#    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/26 11:45:12 by gabo              #+#    #+#              #
-#    Updated: 2025/03/26 14:02:37 by gabo             ###   ########.fr        #
+#    Updated: 2025/04/08 21:21:49 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,10 +53,10 @@ fclean: clean
 	@rm -f $(NAME)
 	@echo " Deleting finished! 🗑"
 
-# git:
-#         @git add .
-#         @git commit
-#         @git push
+git:
+	@git add .
+	@git commit
+	@git push
 
 re: fclean all
 
