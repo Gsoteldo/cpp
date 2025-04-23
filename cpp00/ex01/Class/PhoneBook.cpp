@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 13:46:50 by gabo              #+#    #+#             */
-/*   Updated: 2025/04/10 00:00:34 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2025/04/23 20:20:37 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void PhoneBook::addContact(int numContacts) {
 	std::string	phoneNumber;
 
 
-	std::cout << (numContacts % 8)<< "Introduce your first name: ";
+	std::cout << "Introduce your first name: ";
 	std::cin >> firstName;
 	_contact[numContacts % 8].setFirstName(firstName);
 	std::cin.clear();
@@ -52,9 +52,9 @@ void PhoneBook::addContact(int numContacts) {
 
 std::string PhoneBook::formatField(std::string field) {
     if (field.length() > 10)
-        return field.substr(0, 9) + "."; // 9 letras + "." = 10 caracteres
+        return field.substr(0, 9) + "."; // Deja solo 9 caracteres de la cadena y añade un punto
     else
-        return std::string(10 - field.length(), ' ') + field; // rellena con espacios delante
+        return std::string(10 - field.length(), ' ') + field; // rellena con espacios delante de la cadena
 }
 
 void PhoneBook::filterContact(int numContacts) {
@@ -64,13 +64,14 @@ void PhoneBook::filterContact(int numContacts) {
 	std::cin >> index;
 
 	if (index >= 0 && index <= numContacts) {
-		std::cout << "User id: " << index << std::endl;
+		std::cout << std::endl  << "------------------------" << std::endl;
+		std::cout << "User ID: " << index << std::endl;
 		std::cout << "------------------------" << std::endl;
-		std::cout << "First Name: " << _contact[index].getFirstName() << std::endl; 
-		std::cout << "Last Name: " << _contact[index].getLastName() << std::endl; 
-		std::cout << "Nickname: " << _contact[index].getNickname() << std::endl; 
-		std::cout << "Phone Number: "<< _contact[index].getPhoneNumber() << std::endl; 
-		std::cout << "Darkest secret: "<< _contact[index].getDarkSecret() << std::endl; 
+		std::cout << "-> First Name: " << _contact[index].getFirstName() << std::endl; 
+		std::cout << "-> Last Name: " << _contact[index].getLastName() << std::endl; 
+		std::cout << "-> Nickname: " << _contact[index].getNickname() << std::endl; 
+		std::cout << "-> Phone Number: "<< _contact[index].getPhoneNumber() << std::endl; 
+		std::cout << "-> Darkest secret: "<< _contact[index].getDarkSecret() << std::endl; 
 	} else {
 		std::cout << "Invalid Id" << std::endl;
 	}
@@ -84,10 +85,10 @@ void PhoneBook::searchContact(int numContacts) {
 		for (int i = 0; i < numContacts; i++)
 		{
     		std::cout << "--------------------------------------------------" << std::endl;
-			std::cout << " " << std::setw(10) << i << "|";
-			std::cout << formatField(_contact[i].getFirstName()) << "|";
-			std::cout << formatField(_contact[i].getLastName()) << "|";
-			std::cout << formatField(_contact[i].getNickname()) << "|" << std::endl;
+			std::cout << " " << std::setw(10) << i << "|"; //Ajusta el tamano de la columna
+			std::cout << std::setw(10) << formatField(_contact[i].getFirstName()) << "|";
+			std::cout << std::setw(10) << formatField(_contact[i].getLastName()) << "|";
+			std::cout << std::setw(10) << formatField(_contact[i].getNickname()) << "|" << std::endl;
 		}
 		std::cout << "--------------------------------------------------" << std::endl << std::endl;
 		filterContact(numContacts);
@@ -96,10 +97,10 @@ void PhoneBook::searchContact(int numContacts) {
 		for (size_t i = 0; i < 8; i++)
 		{
 			std::cout << "--------------------------------------------------" << std::endl;
-			std::cout << " " << std::setw(10) << i << "|";
-			std::cout << formatField(_contact[i].getFirstName()) << "|";
-			std::cout << formatField(_contact[i].getLastName()) << "|";
-			std::cout << formatField(_contact[i].getNickname()) << "|" << std::endl;
+			std::cout << " " << std::setw(10) << i << "|"; //Ajusta el tamano de la columna
+			std::cout << std::setw(10) << formatField(_contact[i].getFirstName()) << "|";
+			std::cout << std::setw(10) << formatField(_contact[i].getLastName()) << "|";
+			std::cout << std::setw(10) << formatField(_contact[i].getNickname()) << "|" << std::endl;
 		}
 		std::cout << "--------------------------------------------------" << std::endl << std::endl;
 		filterContact(8);
