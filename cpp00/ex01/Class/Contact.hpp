@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 13:47:32 by gabo              #+#    #+#             */
-/*   Updated: 2025/04/09 23:14:53 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2025/05/06 20:15:07 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ class Contact {
 		std::string	_darkSecret;
 	public:
 		Contact();
-		Contact(const std::string& firstName, const std::string& lastName, const std::string& nickName, const std::string phoneNumber, const std::string& darkSecret);
+		Contact(
+			const std::string firstName,
+			const std::string lastName,
+			const std::string nickName,
+			const std::string phoneNumber,
+			const std::string darkSecret);
 		~Contact();
 
 

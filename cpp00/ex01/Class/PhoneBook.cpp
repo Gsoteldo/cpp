@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 13:46:50 by gabo              #+#    #+#             */
-/*   Updated: 2025/04/23 20:20:37 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2025/05/06 21:28:58 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,92 @@
 PhoneBook::PhoneBook() {}
 PhoneBook::~PhoneBook() {}
 
-void PhoneBook::addContact(int numContacts) {
+int PhoneBook::inputData(std::string inputType, int numContacts) {
+	
+	std::string input;
+	
+	do
+	{
+		// std::cin.ignore(10000, '\n');
+		if (inputType == "dark secret")
+			std::cout << "Introduce your " << inputType << "(We won't tell anyone :) ):";
+		else
+			std::cout << "Introduce your " << inputType << ": ";
+		std::getline(std::cin, input);
+		if (input.empty()) {
+			if (std::cin.eof()) {
+				std::cout << "Ctrl-D detected. Exiting..." << std::endl;
+				return (0);
+			}
+			std::cout << inputType << " cannot be empty. Please try again.";
+			std::cout << std::endl << std::endl;
+		}
+	} while (input.empty());
+	
+	if (inputType == "first name")
+		_contact[numContacts % 8].setFirstName(input);
+	else if (inputType == "last name")
+		_contact[numContacts % 8].setLastName(input);
+	else if (inputType == "nickname")
+		_contact[numContacts % 8].setNickname(input);
+	else if (inputType == "phone number")
+		_contact[numContacts % 8].setPhoneNumber(input);
+	else if (inputType == "dark secret")
+		_contact[numContacts % 8].setDarkSecret(input);
+	else
+		std::cout << "Invalid input type" << std::endl << std::endl;
+	std::cout << std::endl;
+	return (1);
+}
+
+int PhoneBook::addContact(int numContacts) {
 	std::string	firstName;
 	std::string	lastName;
 	std::string	nickName;
 	std::string	darkSecret;
 	std::string	phoneNumber;
 
+	if (inputData("first name", numContacts) == 0)
+		return (0);
+	if (inputData("last name", numContacts) == 0)
+		return (0);
+	if (inputData("nickname", numContacts) == 0)
+		return (0);
+	if (inputData("phone number", numContacts) == 0)
+		return (0);
+	if (inputData("dark secret", numContacts) == 0)
+		return (0);
+	
 
-	std::cout << "Introduce your first name: ";
-	std::cin >> firstName;
-	_contact[numContacts % 8].setFirstName(firstName);
-	std::cin.clear();
 
- 	std::cout << "Introduce your last name: ";
-	std::cin >> lastName;
-	_contact[numContacts % 8].setLastName(lastName);
-	std::cin.clear();
 
-	std::cout << "Introduce your nickname: ";
-	std::cin >> nickName;
-	_contact[numContacts % 8].setNickname(nickName);
-	std::cin.clear();
+ 	// std::cout << "Introduce your last name: ";
+	// std::cin >> lastName;
+	// _contact[numContacts % 8].setLastName(lastName);
+	// std::cin.clear();
 
-	std::cout << "Introduce your phoneNumber: ";
-	std::cin >> phoneNumber;
-	_contact[numContacts % 8].setPhoneNumber(phoneNumber);
-	std::cin.clear();
+	// std::cout << "Introduce your nickname: ";
+	// std::cin >> nickName;
+	// _contact[numContacts % 8].setNickname(nickName);
+	// std::cin.clear();
 
-	std::cout << "Introduce your dark secrets (We won't tell anyone :) ): ";
-	std::cin >> darkSecret;
-	_contact[numContacts % 8].setDarkSecret(darkSecret);
-	std::cin.clear();
+	// std::cout << "Introduce your phoneNumber: ";
+	// std::cin >> phoneNumber;
+	// _contact[numContacts % 8].setPhoneNumber(phoneNumber);
+	// std::cin.clear();
+
+	// std::cout << "Introduce your dark secrets (We won't tell anyone :) ): ";
+
+	// // Limpia el buffer de entrada para evitar problemas con getline
+	// std::cin.ignore(10000, '\n');
+
+	// // Lee la cadena de caracteres de std::cin hasta el final de la linea
+	// // y lo guarda en darkSecret.
+	// std::getline(std::cin ,darkSecret);
+	// _contact[numContacts % 8].setDarkSecret(darkSecret);
+	// std::cin.clear();
+
+	return (1);
 }
 
 std::string PhoneBook::formatField(std::string field) {
@@ -57,13 +111,13 @@ std::string PhoneBook::formatField(std::string field) {
         return std::string(10 - field.length(), ' ') + field; // rellena con espacios delante de la cadena
 }
 
-void PhoneBook::filterContact(int numContacts) {
+void PhoneBook::filterContact() {
 
 	int index = 0;
 	std::cout << "Filter one user by their ID: ";
 	std::cin >> index;
 
-	if (index >= 0 && index <= numContacts) {
+	if (index >= 0 && index < 8) {
 		std::cout << std::endl  << "------------------------" << std::endl;
 		std::cout << "User ID: " << index << std::endl;
 		std::cout << "------------------------" << std::endl;
@@ -75,7 +129,7 @@ void PhoneBook::filterContact(int numContacts) {
 	} else {
 		std::cout << "Invalid Id" << std::endl;
 	}
-	
+	std::cin.ignore(10000, '\n');
 }
 
 void PhoneBook::searchContact(int numContacts) {
@@ -91,7 +145,7 @@ void PhoneBook::searchContact(int numContacts) {
 			std::cout << std::setw(10) << formatField(_contact[i].getNickname()) << "|" << std::endl;
 		}
 		std::cout << "--------------------------------------------------" << std::endl << std::endl;
-		filterContact(numContacts);
+		filterContact();
 		
 	} else {
 		for (size_t i = 0; i < 8; i++)
@@ -103,8 +157,6 @@ void PhoneBook::searchContact(int numContacts) {
 			std::cout << std::setw(10) << formatField(_contact[i].getNickname()) << "|" << std::endl;
 		}
 		std::cout << "--------------------------------------------------" << std::endl << std::endl;
-		filterContact(8);
+		filterContact();
 	}
-		
-
 }

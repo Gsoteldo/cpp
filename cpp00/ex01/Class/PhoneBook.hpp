@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 21:59:51 by gsoteldo          #+#    #+#             */
-/*   Updated: 2025/04/10 00:56:46 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2025/05/06 21:28:57 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,15 @@ class PhoneBook {
 		Contact _contact[8];
 
 		std::string formatField(std::string field);
-		void filterContact(int numContacts);
+		void filterContact();
+		int inputData(std::string inputType, int numContacts);
 	public:
 		PhoneBook();
 		~PhoneBook();
 
 		/****************************FUNCTIONS****************************/
-		void addContact(int numContacts);
+		int addContact(int numContacts);
 		void searchContact(int numContacts);	
 };
-
-
 
 #endif

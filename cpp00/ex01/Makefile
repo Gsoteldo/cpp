@@ -6,7 +6,7 @@
 #    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/26 11:45:12 by gabo              #+#    #+#              #
-#    Updated: 2025/04/08 21:21:49 by gsoteldo         ###   ########.fr        #
+#    Updated: 2025/05/06 20:43:12 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CLEAN = \033[2K\r
 
 
 NAME = phonebook
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 

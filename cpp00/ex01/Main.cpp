@@ -6,77 +6,80 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 13:46:44 by gabo              #+#    #+#             */
-/*   Updated: 2025/04/10 01:07:15 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2025/05/06 21:24:22 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Class/Contact.hpp"
 #include "Class/PhoneBook.hpp"
 
-void	exitPhoneBook(){
-	std::cout << "Sale de la agenda" << std::endl;
-}
+// void	exitPhoneBook(){
+// 	std::cout << "Sale de la agenda" << std::endl;
+// }
 
-void	searchContact() {
-	std::cout << "Entra en la funcion de buscar" << std::endl;
-}
+// void	searchContact() {
+// 	std::cout << "Entra en la funcion de buscar" << std::endl;
+// }
 
-void	addContact() {
-	std::cout << "Entra en la funcion de añadir" << std::endl;
-}
+// void	addContact() {
+// 	std::cout << "Entra en la funcion de añadir" << std::endl;
+// }
 
-int	printMenu() {
+std::string	printMenu() {
 
-	int index = 0;
+	std::string index;
 
 	std::cout << std::endl << "----------------PhoneBook----------------" << std::endl;
-	std::cout << "1. Add contact" << std::endl;
-	std::cout << "2. Search contact" << std::endl;
-	std::cout << "3. Exit" << std::endl;
-	std::cout << "Select an option: ";
-	std::cin >> index;
+	std::cout << "ADD: Add contact" << std::endl;
+	std::cout << "SEARCH: Search contact" << std::endl;
+	std::cout << "EXIT: Exit" << std::endl;
+	std::cout << "Please, select an option: ";
+	std::getline(std::cin, index);
 
 	//Si falla el index, limpia lo que haya dentro de "cin" para evitar bucles infinitos
 	if (std::cin.fail()) {
 		if (std::cin.eof()) {
-			return (-1);
+			return ("Ctrl-D");
 		}
-    	std::cin.clear();
-    	std::cin.ignore(10000, '\n');
-    	index = 0;
+    	// std::cin.clear();
+    	// std::cin.ignore(10000, '\n');
+    	index = "Invalid";
 	}
 	return (index);
 }	
 
 int main() {
 
-	int index = 0;
+	std::string index;
 	PhoneBook phoneBook;
 	int numContacts = 0;
 	while (1) {
 
-		std::cin.clear();
+		// std::cin.clear();
 		index = printMenu();
-		switch (index)
-		{
-		case 1:
-			phoneBook.addContact(numContacts);
+		if (index == "ADD") {
+			if (phoneBook.addContact(numContacts) == 0)
+			{
+				std::cout << "Exiting PhoneBook..." << std::endl;
+				break;
+			}
+			
 			numContacts++;
-			break;
-		case 2:
+		}
+		else if (index == "SEARCH") {
 			phoneBook.searchContact(numContacts);
-			break;
-		case 3:
-			exitPhoneBook();
-			return (0);
-		case -1:
-			std::cout << "Saliendo con Ctrl-D" << std::endl;
-			return (0);
-		default:
-			std::cout << "Invalid option. Enter a number between 1 and 3" << std::endl;
+		}
+		else if (index == "EXIT") {
+			std::cout << "Exiting PhoneBook..." << std::endl;
 			break;
 		}
-		
+		else if (index == "Ctrl-D") {
+			std::cout << std::endl << "Exiting with Ctrl-D" << std::endl;
+			break;
+		}
+		else {
+			std::cout << "Invalid option. Enter a number between 1 and 3" << std::endl;
+		}		
 	}
 	std::cout << std::endl;
 
