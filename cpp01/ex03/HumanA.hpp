@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:00:01 by gsoteldo          #+#    #+#             */
-/*   Updated: 2025/07/17 19:15:19 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2025/07/17 23:24:15 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class HumanA
 
 		std::string getName();
 		void setName(std::string name);
+		void attack();
 };
 
 #endif
