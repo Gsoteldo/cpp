@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 19:39:14 by gsoteldo          #+#    #+#             */
-/*   Updated: 2025/07/17 17:38:26 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2025/07/23 21:55:40 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int main()
 	z = newZombie("Alice"); // Devuelve un puntero a un Zombie creado en el heap
 	randomChump("Bob");	// Crea un Zombie en el stack y lo destruye automáticamente al salir del scope
 	
+	//abbviuaheruyvi
 	delete z; // Elimina el Zombie creado en el heap
 	return (0);	
 }
