@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 15:02:43 by gabo              #+#    #+#             */
-/*   Updated: 2025/07/28 16:02:11 by gabo             ###   ########.fr       */
+/*   Updated: 2025/07/28 21:01:36 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ class Point
 };
 
 	std::ostream& operator<<(std::ostream& out, const Point &point);
-
+	bool bsp( Point const a, Point const b, Point const c, Point const point);
 #endif

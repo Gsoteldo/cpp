@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:44:04 by gabo              #+#    #+#             */
-/*   Updated: 2025/07/28 14:04:08 by gabo             ###   ########.fr       */
+/*   Updated: 2025/07/28 20:57:35 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ class Fixed
 		bool operator!=(const Fixed &fixed) const;
 
 		/* Arithmetic operators */
-		Fixed operator+(const Fixed &fixed);
-		Fixed operator-(const Fixed &fixed);
-		Fixed operator*(const Fixed &fixed);
-		Fixed operator/(const Fixed &fixed);
+		Fixed operator+(const Fixed &fixed) const;
+		Fixed operator-(const Fixed &fixed) const;
+		Fixed operator*(const Fixed &fixed) const;
+		Fixed operator/(const Fixed &fixed) const;
 
 		/* Increment/Decrement operators */
 		Fixed& operator++();

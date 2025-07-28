@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:44:07 by gabo              #+#    #+#             */
-/*   Updated: 2025/07/28 16:05:41 by gabo             ###   ########.fr       */
+/*   Updated: 2025/07/28 20:57:35 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,16 +96,16 @@ bool Fixed::operator!=(const Fixed &fixed) const{
 	return (getRawBits() != fixed.getRawBits());
 }
 /* Arithmetic operators */
-Fixed Fixed::operator+(const Fixed &fixed) {
+Fixed Fixed::operator+(const Fixed &fixed) const {
 	return (Fixed(toFloat() + fixed.toFloat()));
 }
-Fixed Fixed::operator-(const Fixed &fixed) {
+Fixed Fixed::operator-(const Fixed &fixed) const {
 	return (Fixed(toFloat() - fixed.toFloat()));
 }
-Fixed Fixed::operator*(const Fixed &fixed) {
+Fixed Fixed::operator*(const Fixed &fixed) const {
 	return (Fixed(toFloat() * fixed.toFloat()));
 }
-Fixed Fixed::operator/(const Fixed &fixed) {
+Fixed Fixed::operator/(const Fixed &fixed) const {
 	return (Fixed(toFloat() / fixed.toFloat()));
 }
 
