@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 13:15:03 by gabo              #+#    #+#             */
-/*   Updated: 2025/07/18 15:25:21 by gabo             ###   ########.fr       */
+/*   Updated: 2025/07/22 20:58:23 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void Harl::complain(std::string level) {
 					break;
 			
 				default:
-					break; // This should not happen, but just in case
+					break;
 			}
 		}
 	}

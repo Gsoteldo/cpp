@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 11:34:35 by gabo              #+#    #+#             */
-/*   Updated: 2025/07/18 13:11:24 by gabo             ###   ########.fr       */
+/*   Updated: 2025/07/22 20:37:54 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int validateArguments(int argc, char *argv[]) {
 	}
 	return (0);
 }
+
+
 int main(int argc, char *argv[]) {
 	if (validateArguments(argc, argv))
 		return (1);
