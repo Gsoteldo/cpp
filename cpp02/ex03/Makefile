@@ -6,7 +6,7 @@
 #    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2025/07/28 21:01:22 by gsoteldo         ###   ########.fr        #
+#    Updated: 2025/07/29 17:21:55 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ TOTAL_FILES = $(words $(FILES))
 CLEAN = \033[2K\r
 
 
-NAME = BSP
+NAME = bsp
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 

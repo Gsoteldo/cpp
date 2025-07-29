@@ -6,19 +6,17 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:44:07 by gabo              #+#    #+#             */
-/*   Updated: 2025/07/28 20:57:35 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2025/07/29 17:04:26 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 Fixed::Fixed(): _fixedPointValue(0) {
-	// std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int num) {
 	_fixedPointValue = num * (1 << _fractionalBits);
-	// std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float num) {
@@ -28,25 +26,20 @@ Fixed::Fixed(const float num) {
 
 Fixed::Fixed(const Fixed &fixed) {
 	_fixedPointValue = fixed._fixedPointValue;
-	// std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed& Fixed::operator=(const Fixed &fixed) {
 	if (this != &fixed)
 		this->_fixedPointValue = fixed._fixedPointValue;
-	// std::cout << "Copy assignment operator called" << std::endl;
 	return (*this);
 }
 
 
 
-Fixed::~Fixed() {
-	// std::cout << "Destructor called" << std::endl;
-}
+Fixed::~Fixed() {}
 
 
 int Fixed::getRawBits(void) const {
-	// std::cout << "getRawBits member function called" << std::endl;
 	return(_fixedPointValue);
 }
 
@@ -76,6 +69,7 @@ std::ostream& operator<<(std::ostream& out, const Fixed& fixed) {
 	return (out);
 }
 
+/* Comparison operators */
 bool Fixed::operator>(const Fixed &fixed) const{
 	return (getRawBits() > fixed.getRawBits());
 }
@@ -95,6 +89,7 @@ bool Fixed::operator==(const Fixed &fixed) const {
 bool Fixed::operator!=(const Fixed &fixed) const{
 	return (getRawBits() != fixed.getRawBits());
 }
+
 /* Arithmetic operators */
 Fixed Fixed::operator+(const Fixed &fixed) const {
 	return (Fixed(toFloat() + fixed.toFloat()));
@@ -128,6 +123,7 @@ Fixed Fixed::operator--(int) {
 	--(_fixedPointValue);
 	return (oldValue);
 }
+
 
 Fixed& Fixed::min(Fixed &f1, Fixed &f2) {
 	if (f1 < f2)
