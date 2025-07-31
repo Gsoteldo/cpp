@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 15:40:10 by gsoteldo          #+#    #+#             */
-/*   Updated: 2025/07/31 16:29:19 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2025/07/31 17:41:07 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,30 @@
 
 class ClapTrap
 {
-private:
-	std::string _name;
-	int _hitPoint;
-	int _energyPoint;
-	int _attackDamage;
-public:
-
-	//Constructors and Destructors
-	ClapTrap();
-	ClapTrap(std::string name);
-	ClapTrap(const ClapTrap &claptrap);
-	ClapTrap &operator=(const ClapTrap &claptrap);
-	~ClapTrap();
-
-
-	void	attack(const std::string& target);
-	void	takeDamage(unsigned int amount);
-	void	beRepaired(unsigned int amount);
-
-	std::string getName() const;
-	int getHitPoint() const;
-	int getEnergyPoint() const;
-	int getAttackDamage() const;
+	private:
+		std::string _name;
+		int _hitPoint;
+		int _energyPoint;
+		int _attackDamage;
+		
+	public:
 	
-
+		//Constructors and Destructors
+		ClapTrap();
+		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap &claptrap);
+		ClapTrap &operator=(const ClapTrap &claptrap);
+		~ClapTrap();
+	
+	
+		void	attack(const std::string& target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
+	
+		std::string getName() const;
+		int getHitPoint() const;
+		int getEnergyPoint() const;
+		int getAttackDamage() const;
 };
 
 std::ostream& operator<<(std::ostream& out, const ClapTrap &claptrap);

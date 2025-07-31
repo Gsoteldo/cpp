@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 15:34:52 by gabo              #+#    #+#             */
-/*   Updated: 2025/07/31 17:25:33 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2025/07/31 17:35:43 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,20 @@ int main() {
 	a.beRepaired(5);
 
 
-	a.getAttackDamage(10);
-	b.getAttackDamage(2);
+	a.takeDamage(10);
+	b.takeDamage(2);
 
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+
+	a.takeDamage(10);
+	b.takeDamage(2);
+	
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+
+	a.takeDamage(10);
+	
 	std::cout << std::endl;
 
 	return 0;
