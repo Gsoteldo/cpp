@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:44:04 by gabo              #+#    #+#             */
-/*   Updated: 2025/07/28 14:04:08 by gabo             ###   ########.fr       */
+/*   Updated: 2025/07/29 17:16:43 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 # define FIXED_HPP
 
 #include <iostream>
-
 #include <cmath>
+
 class Fixed
 {
 	private:
 		int _fixedPointValue;
 		static const int _fractionalBits = 8;
 	public:
-
-		/* Constructor and Destructors */
 		Fixed();
 		Fixed(const int num);
 		Fixed(const float num);
@@ -47,10 +45,10 @@ class Fixed
 		bool operator!=(const Fixed &fixed) const;
 
 		/* Arithmetic operators */
-		Fixed operator+(const Fixed &fixed);
-		Fixed operator-(const Fixed &fixed);
-		Fixed operator*(const Fixed &fixed);
-		Fixed operator/(const Fixed &fixed);
+		Fixed operator+(const Fixed &fixed) const;
+		Fixed operator-(const Fixed &fixed) const;
+		Fixed operator*(const Fixed &fixed) const;
+		Fixed operator/(const Fixed &fixed) const;
 
 		/* Increment/Decrement operators */
 		Fixed& operator++();
@@ -62,13 +60,8 @@ class Fixed
 		static const Fixed& min(const Fixed &f1, const Fixed &f2);
 		static Fixed& max(Fixed &f1, Fixed &f2);
 		static const Fixed& max(const Fixed &f1, const Fixed &f2);
-
-		
-		
 };
 
 	std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
-
-
 
 #endif

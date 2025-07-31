@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+         #
+#    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2025/07/28 14:58:16 by gabo             ###   ########.fr        #
+#    Updated: 2025/07/29 17:22:05 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ TOTAL_FILES = $(words $(FILES))
 CLEAN = \033[2K\r
 
 
-NAME = Fixed2
+NAME = fixed2
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 

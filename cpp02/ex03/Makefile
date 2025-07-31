@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+         #
+#    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2025/07/28 16:03:56 by gabo             ###   ########.fr        #
+#    Updated: 2025/07/29 17:21:55 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,14 +19,15 @@ TOTAL_FILES = $(words $(FILES))
 CLEAN = \033[2K\r
 
 
-NAME = BSP
+NAME = bsp
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 FILES = main.cpp \
 		Fixed.cpp \
-		Point.cpp
+		Point.cpp \
+		bsp.cpp
 
 
 OBJS = $(FILES:.cpp=.o)

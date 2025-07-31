@@ -3,51 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:44:07 by gabo              #+#    #+#             */
-/*   Updated: 2025/07/28 14:03:58 by gabo             ###   ########.fr       */
+/*   Updated: 2025/07/29 17:20:14 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-Fixed::Fixed(): _fixedPointValue(0) {
-	std::cout << "Default constructor called" << std::endl;
-}
+Fixed::Fixed(): _fixedPointValue(0) {}
 
 Fixed::Fixed(const int num) {
 	_fixedPointValue = num * (1 << _fractionalBits);
-	std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float num) {
 	_fixedPointValue = roundf(num * (1 << _fractionalBits));
-
 }
 
 Fixed::Fixed(const Fixed &fixed) {
 	_fixedPointValue = fixed._fixedPointValue;
-	std::cout << "Copy constructor called" << std::endl;
-	// 
 }
 
 Fixed& Fixed::operator=(const Fixed &fixed) {
 	if (this != &fixed)
 		this->_fixedPointValue = fixed._fixedPointValue;
-	std::cout << "Copy assignment operator called" << std::endl;
 	return (*this);
 }
 
 
 
 Fixed::~Fixed() {
-	std::cout << "Destructor called" << std::endl;
 }
 
 
 int Fixed::getRawBits(void) const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return(_fixedPointValue);
 }
 
@@ -97,16 +88,16 @@ bool Fixed::operator!=(const Fixed &fixed) const{
 	return (getRawBits() != fixed.getRawBits());
 }
 /* Arithmetic operators */
-Fixed Fixed::operator+(const Fixed &fixed) {
+Fixed Fixed::operator+(const Fixed &fixed) const {
 	return (Fixed(toFloat() + fixed.toFloat()));
 }
-Fixed Fixed::operator-(const Fixed &fixed) {
+Fixed Fixed::operator-(const Fixed &fixed) const {
 	return (Fixed(toFloat() - fixed.toFloat()));
 }
-Fixed Fixed::operator*(const Fixed &fixed) {
+Fixed Fixed::operator*(const Fixed &fixed) const {
 	return (Fixed(toFloat() * fixed.toFloat()));
 }
-Fixed Fixed::operator/(const Fixed &fixed) {
+Fixed Fixed::operator/(const Fixed &fixed) const {
 	return (Fixed(toFloat() / fixed.toFloat()));
 }
 
