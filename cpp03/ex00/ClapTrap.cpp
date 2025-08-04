@@ -6,7 +6,7 @@
 /*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 15:40:13 by gsoteldo          #+#    #+#             */
-/*   Updated: 2025/07/31 18:15:55 by gabo             ###   ########.fr       */
+/*   Updated: 2025/08/04 10:01:22 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &claptrap) {
 
 ClapTrap::~ClapTrap() {
 	
-	std::cout << _name << " Robot: destroyed, but not the end" << std::endl;	
+	std::cout << _name << " Robot: destroyed, but not the end" << std::endl;
 }
 
 /*###########################################################################*/
@@ -82,26 +82,30 @@ void	ClapTrap::attack(const std::string& target) {
 	
 	(_energyPoint)--;
 
-	std::cout << "ClapTrap " << _name << " attacks " << target;
-	std::cout << ", causing " << _attackDamage << " points of damage!";
+	std::cout << "ClapTrap " << _name << RED << " attacks " << target << DEFAULT;
+	std::cout << ", causing " << _attackDamage << " points of damage! ";
 	std::cout << "It is a good robot." << std::endl;
 }
 
 static bool checkRepaired(const ClapTrap &claptrap, int amount) {
 	
 	if (amount == 0) {
-		std::cout << "ClapTrap " << claptrap.getName() << " was attacked with an intensity of 0.";
-		std::cout << " The robot did not even move. It was hurt more by the uncomfortable silence.";
+		std::cout << "ClapTrap " << claptrap.getName();
+		std::cout << " was attacked with an intensity of 0.";
+		std::cout << " The robot did not even move.";
+		std::cout << " It was hurt more by the uncomfortable silence.";
 		std::cout << std::endl;
 		return (false);
 	}
 	if (claptrap.getHitPoint() <= 0) {
-		std::cout << "ClapTrap " << claptrap.getName() << " is too injured, cannot be repaired";
+		std::cout << "ClapTrap " << claptrap.getName();
+		std::cout << " is too injured, cannot be repaired";
 		std::cout << std::endl;
 		return (false);
 	}
 	else if (claptrap.getEnergyPoint() <= 0) {
-		std::cout << "ClapTrap " << claptrap.getName() << " is too exhausted, cannot be repaired";
+		std::cout << "ClapTrap " << claptrap.getName();
+		std::cout << " is too exhausted, cannot be repaired";
 		std::cout << std::endl;
 		return (false);
 	}
@@ -120,29 +124,6 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 
 	if (checkRepaired(*this, amount) == false)
 		return ;
-	
-	// if (amount == 0) {
-	// 	std::cout << "ClapTrap " << _name << " was attacked with an intensity of 0.";
-	// 	std::cout << " The robot did not even move. It was hurt more by the uncomfortable silence.";
-	// 	std::cout << std::endl;
-	// 	return ;
-	// }
-	// if (_hitPoint <= 0) {
-	// 	std::cout << "ClapTrap " << _name << " is too injured, cannot be repaired";
-	// 	std::cout << std::endl;
-	// 	return ;
-	// }
-	// else if (_energyPoint <= 0) {
-	// 	std::cout << "ClapTrap " << _name << " is too exhausted, cannot be repaired";
-	// 	std::cout << std::endl;
-	// 	return ;
-	// }
-	// else if (_hitPoint >= 20) {
-	// 	std::cout << "ClapTrap " << _name << " is too healthy. ";
-	// 	std::cout << "Repair cancelled due to excess health.";
-	// 	std::cout << std::endl;
-	// 	return ;
-	// }
 
 	(_energyPoint)--;
 	if (_hitPoint + amount <= 20)
@@ -150,15 +131,18 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	else 
 		_hitPoint = 20;
 
-	std::cout << "ClapTrap " << _name << " is repaired and recovers " << amount;
-	std::cout << " life points. " << _attackDamage << " It is a good robot." << std::endl;
+	std::cout << YELLOW << "ClapTrap " << _name << DEFAULT;
+	std::cout << " is repaired and recovers " << amount;
+	std::cout << " life points. ";
+	std::cout << "It is a good robot." << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
 	
 	if (_hitPoint <= 0) {
 		std::cout << "ClapTrap " << _name;
-		std::cout << " It's already destroyed... and you're still trying to destroy it?";
+		std::cout << YELLOW << " It's already destroyed..." << DEFAULT;
+		std::cout << "and you're still trying to destroy it?";
 		std::cout << " Do you think it is a zombie or what?";
 		std::cout << std::endl;
 		return ;
@@ -196,7 +180,7 @@ int ClapTrap::getAttackDamage() const {
 std::ostream& operator<<(std::ostream& out, const ClapTrap &claptrap) {
 
 	out << std::endl;
-	out << "claptrap name: " << claptrap.getName() << std::endl;
+	out << GREEN << "claptrap name: " << claptrap.getName() << DEFAULT << std::endl;
 	out << "-Hit Point: " << claptrap.getHitPoint() << std::endl;
 	out << "-Energy Point: " << claptrap.getEnergyPoint() << std::endl;
 	out << "-Attack Damage: " << claptrap.getAttackDamage() << std::endl;
