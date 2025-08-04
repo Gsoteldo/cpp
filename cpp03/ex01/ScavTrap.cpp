@@ -6,7 +6,7 @@
 /*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 10:20:41 by gabo              #+#    #+#             */
-/*   Updated: 2025/08/04 13:27:11 by gabo             ###   ########.fr       */
+/*   Updated: 2025/08/04 14:01:28 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ ScavTrap::ScavTrap() : ClapTrap("Unknown") {
 	_energyPoint = 50;
 	_attackDamage = 20;
 
-	std::cout << _name << " Robot: built and ready to serve" << std::endl;
+	std::cout << "ScavTrap " << _name << " has been summoned to protect the gate." << std::endl;
+	std::cout << "Duty above all." << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
@@ -29,7 +30,8 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	_energyPoint = 50;
 	_attackDamage = 20;
 
-	std::cout << _name << " Robot: built and ready to serve" << std::endl;
+	std::cout << "ScavTrap " << _name << " has been summoned to protect the gate." << std::endl;
+	std::cout << "Duty above all." << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &scavTrap) : ClapTrap(scavTrap) {
@@ -50,7 +52,8 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &scavTrap) {
 }
 
 ScavTrap::~ScavTrap() {
-	std::cout << _name << " Robot: destroyed and he can see the end approaching." << std::endl;
+	std::cout << "ScavTrap " << _name << " has fallen." << std::endl;
+	std::cout << "The gate stands... for now." << std::endl;
 }
 
 /*###########################################################################*/
