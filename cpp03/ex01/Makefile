@@ -6,7 +6,7 @@
 #    By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/26 11:45:12 by gabo              #+#    #+#              #
-#    Updated: 2025/07/31 15:35:16 by gabo             ###   ########.fr        #
+#    Updated: 2025/08/04 12:34:24 by gabo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,14 @@ TOTAL_FILES = $(words $(FILES))
 CLEAN = \033[2K\r
 
 
-NAME = megaphone
+NAME = scavTrap
 CC = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
-FILES = main.cpp
+FILES = main.cpp \
+		ClapTrap.cpp \
+		ScavTrap.cpp \
 
 OBJS = $(FILES:.cpp=.o)
 
