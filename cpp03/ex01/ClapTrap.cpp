@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 15:40:13 by gsoteldo          #+#    #+#             */
-/*   Updated: 2025/08/04 12:59:55 by gabo             ###   ########.fr       */
+/*   Updated: 2025/08/04 18:16:51 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 	if (_hitPoint <= 0) {
 		std::cout << _name;
 		std::cout << YELLOW << " It's already destroyed..." << DEFAULT;
-		std::cout << "and you're still trying to destroy it?";
+		std::cout << " and you're still trying to destroy it?";
 		std::cout << " Do you think it is a zombie or what?";
 		std::cout << std::endl;
 		return ;
@@ -156,8 +156,11 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 		std::cout << std::endl;
 		return ;
 	}
+
+
+	int tempHitPoint = _hitPoint - amount;
 	
-	if (_hitPoint - amount != 0)
+	if (tempHitPoint < 0)
 		_hitPoint -= amount;
 	else
 		_hitPoint = 0;
