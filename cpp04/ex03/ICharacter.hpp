@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:30:37 by gabo              #+#    #+#             */
-/*   Updated: 2025/08/11 17:43:30 by gabo             ###   ########.fr       */
+/*   Updated: 2025/08/11 21:30:51 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {
@@ -25,7 +27,7 @@ class ICharacter
 		
 		virtual void equip(AMateria* m) = 0;
 		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter& target) = 0;
+		// virtual void use(int idx, ICharacter& target) = 0;
 };
 
 #endif

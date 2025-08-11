@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:18:30 by gabo              #+#    #+#             */
-/*   Updated: 2025/08/11 17:43:26 by gabo             ###   ########.fr       */
+/*   Updated: 2025/08/11 21:30:36 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ public:
 	std::string const &getName() const;
 	void equip(AMateria *m);
 	void unequip(int idx);
-	void use(int idx, ICharacter &target);
+	// void use(int idx, ICharacter &target);
 };
 
 #endif

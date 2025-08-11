@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:49:04 by gabo              #+#    #+#             */
-/*   Updated: 2025/08/11 17:24:05 by gabo             ###   ########.fr       */
+/*   Updated: 2025/08/11 21:27:02 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,9 @@ std::string const &Ice::getType() const {
 
 AMateria* Ice::clone() const {
 	return new Ice(*this);
+}
+
+void Ice::use(ICharacter& target) {
+	std::cout <<  "* shoots an ice bolt at " << target.getName() << " *";
+	std::cout << std::endl;
 }

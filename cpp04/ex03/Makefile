@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+         #
+#    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2025/08/11 17:23:30 by gabo             ###   ########.fr        #
+#    Updated: 2025/08/11 21:30:04 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 FILES = main.cpp \
 	AMateria.cpp \
 	Cure.cpp \
-	Ice.cpp
+	Ice.cpp \
+	Character.cpp
 # 	MateriaSource.cpp \
-# 	Character.cpp
 
 
 OBJS = $(FILES:.cpp=.o)
