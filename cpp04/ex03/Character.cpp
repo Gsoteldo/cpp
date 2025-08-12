@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:18:15 by gabo              #+#    #+#             */
-/*   Updated: 2025/08/12 16:26:35 by gabo             ###   ########.fr       */
+/*   Updated: 2025/08/12 19:55:48 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ Character::Character(const Character &src) : _name(src._name), _numUnequipped(0)
         _unequipped[i] = NULL;
 }
 
-Character &Character::operator=(const Character &rhs) {
-    if (this != &rhs) {
-        _name = rhs._name;
+Character &Character::operator=(const Character &character) {
+    if (this != &character) {
+        _name = character._name;
         
         // 1. Liberar inventario actual
         for (int i = 0; i < 4; ++i) {
@@ -59,8 +59,8 @@ Character &Character::operator=(const Character &rhs) {
         
         // 3. Copiar inventario del otro personaje
         for (int i = 0; i < 4; ++i) {
-            if (rhs._inventory[i])
-                _inventory[i] = rhs._inventory[i]->clone();
+            if (character._inventory[i])
+                _inventory[i] = character._inventory[i]->clone();
             else
                 _inventory[i] = NULL;
         }

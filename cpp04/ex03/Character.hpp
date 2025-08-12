@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:18:30 by gabo              #+#    #+#             */
-/*   Updated: 2025/08/12 15:14:26 by gabo             ###   ########.fr       */
+/*   Updated: 2025/08/12 19:55:17 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ private:
 public:
 	Character();
 	Character(std::string const &name);
-	Character(Character const &src);
-	Character &operator=(Character const &rhs);
+	Character(Character const &character);
+	Character &operator=(Character const &character);
 	~Character();
 
 	std::string const &getName() const;
