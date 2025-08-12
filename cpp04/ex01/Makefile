@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+         #
+#    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2025/08/11 11:08:49 by gabo             ###   ########.fr        #
+#    Updated: 2025/08/12 19:52:20 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ $(NAME): $(OBJS)
 
 %.o: %.cpp
 	$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE) + 1))))
-	@printf "$(CLEAN_SHELL) 🚀 Compiling $<... $(shell echo $$(($(CURRENT_FILE) * 100 / $(TOTAL_FILES))))%%"
+	$(eval PERCENT=$(shell echo $$(($(CURRENT_FILE) * 100 / $(TOTAL_FILES)))))
+	@echo "$(CLEAN) 🚀 Compiling $<... $(PERCENT)%"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 show_progress:
