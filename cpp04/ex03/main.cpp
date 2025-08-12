@@ -3,40 +3,94 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:38:19 by gabo              #+#    #+#             */
-/*   Updated: 2025/08/11 21:32:55 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:23:45 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 #include "Character.hpp"
-#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
 
+int main() {
+    std::cout << "===== TEST 1: Crear y usar materias =====" << std::endl;
+    IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
 
-int main()
-{
-	AMateria *ice = new Ice();
-	AMateria *cure = new Cure();
-	AMateria *cloneCure = cure->clone();
-	AMateria *cloneIce = ice->clone();
-	ICharacter  *character = new Character("Bob");
+    ICharacter* me = new Character("me");
+    AMateria* tmp;
 
-	std::cout << "Materia type: " << cure->getType() << std::endl;
-	std::cout << "Cloned Materia type: " << cloneCure->getType() << std::endl;
-	std::cout << "Ice Materia type: " << ice->getType() << std::endl;
-	std::cout << "Cloned Ice Materia type: " << cloneIce->getType() << std::endl;
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+	delete tmp; // Evitar memory leak
+
 	
+    tmp = src->createMateria("cure");
+    me->equip(tmp);
+	delete tmp; // Evitar memory leak
 
-	ice->use(*character);
-	cure->use(*character);
-	delete ice;
-	delete cure;
-	delete cloneCure;
-	delete cloneIce;
-	delete character;
-	return (0);
+    ICharacter* bob = new Character("bob");
+    me->use(0, *bob);
+    me->use(1, *bob);
+
+    std::cout << "\n===== TEST 2: Tipo inexistente =====" << std::endl;
+    tmp = src->createMateria("fire");
+    if (!tmp) std::cout << "No materia created for type 'fire'" << std::endl;
+
+    std::cout << "\n===== TEST 3: Inventario lleno =====" << std::endl;
+	tmp = src->createMateria("ice");
+    me->equip(tmp);
+	delete tmp; // Evitar memory leak
+	
+	tmp = src->createMateria("cure");
+    me->equip(tmp);
+	delete tmp; // Evitar memory leak
+
+    tmp = src->createMateria("ice");
+	me->equip(tmp);
+	delete tmp; // Evitar memory leak
+
+    std::cout << "\n===== TEST 4: Uso con índice inválido =====" << std::endl;
+    me->use(10, *bob); // No debe crashear
+    me->use(-1, *bob); // No debe crashear
+
+    std::cout << "\n===== TEST 5: Unequip sin borrar =====" << std::endl;
+    me->unequip(0); // No borrar, pero liberar referencia
+    me->use(0, *bob); // Ya no debería hacer nada
+
+    std::cout << "\n===== TEST 6: Copia profunda =====" << std::endl;
+    Character original("original");
+	tmp = src->createMateria("ice");
+    original.equip(tmp);
+	delete tmp;
+
+	tmp = src->createMateria("cure");
+    original.equip(tmp);
+	delete tmp;
+
+    Character copia = original; // Copy constructor
+    original.use(0, *bob);
+    copia.use(0, *bob);
+
+    // Cambiamos materia en original para ver si afecta a copia
+    original.unequip(0);
+    original.use(0, *bob); // No hace nada
+    copia.use(0, *bob); // Debe seguir funcionando
+
+    std::cout << "\n===== TEST 7: MateriaSource lleno =====" << std::endl;
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+    src->learnMateria(new Ice()); // Ya debe estar lleno
+
+    delete me;
+    delete bob;
+    delete src;
+
+    std::cout << "\n===== TESTS COMPLETADOS =====" << std::endl;
+    return 0;
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
+#    By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2025/08/11 21:30:04 by gsoteldo         ###   ########.fr        #
+#    Updated: 2025/08/12 12:46:44 by gabo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,15 +21,15 @@ CLEAN = \033[2K\r
 
 NAME = materia
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 
 FILES = main.cpp \
 	AMateria.cpp \
 	Cure.cpp \
 	Ice.cpp \
-	Character.cpp
-# 	MateriaSource.cpp \
+	Character.cpp \
+	MateriaSource.cpp
 
 
 OBJS = $(FILES:.cpp=.o)

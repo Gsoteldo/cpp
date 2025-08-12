@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:18:30 by gabo              #+#    #+#             */
-/*   Updated: 2025/08/11 21:30:36 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2025/08/12 15:14:26 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ class Character : public ICharacter
 private:
 	std::string _name;
 	AMateria *_inventory[4];
+	AMateria* _unequipped[100]; // Array para materias unequip
+    int _numUnequipped; // Contador
 public:
 	Character();
 	Character(std::string const &name);
@@ -31,7 +33,7 @@ public:
 	std::string const &getName() const;
 	void equip(AMateria *m);
 	void unequip(int idx);
-	// void use(int idx, ICharacter &target);
+	void use(int idx, ICharacter &target);
 };
 
 #endif
