@@ -6,7 +6,7 @@
 /*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 16:32:24 by gabo              #+#    #+#             */
-/*   Updated: 2025/10/08 13:05:56 by gabo             ###   ########.fr       */
+/*   Updated: 2025/10/08 13:13:20 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class Bureaucrat {
 	private:
-		std::string	_name;
+		std::string const	_name;
 		int					_grade;
 	public:
 

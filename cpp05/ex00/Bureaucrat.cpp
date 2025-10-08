@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() {}
+Bureaucrat::Bureaucrat(): _name("Unnamed"), _grade(150) {}
 
 
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade) {
@@ -21,14 +21,10 @@ Bureaucrat::~Bureaucrat() {
 
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &obj) {
-	_name = obj._name;
-	_grade = obj._grade;
-}
+Bureaucrat::Bureaucrat(const Bureaucrat &obj): _name(obj._name), _grade(obj._grade) {}
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj) {
 	if (this != &obj) {
-		_name = obj._name;
 		_grade = obj._grade;
 	}
 	return (*this);
@@ -46,7 +42,7 @@ int Bureaucrat::getGrade() const {
 /*
 	Las excepciones deben heredar de std::exception y sobreescribir el método what()
 	para que devuelva un mensaje de error adecuado.
-	
+
 
 */
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
