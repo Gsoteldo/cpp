@@ -6,7 +6,7 @@
 /*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:44:54 by gabo              #+#    #+#             */
-/*   Updated: 2025/10/09 17:13:29 by gabo             ###   ########.fr       */
+/*   Updated: 2025/10/09 19:44:18 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ class Form {
 		bool		getIsSigned() const;
 		int 		getToSign() const;
 		int			getToExecute() const;
+
+		
 
 		void		beSigned(const Bureaucrat &bureau);
 		
