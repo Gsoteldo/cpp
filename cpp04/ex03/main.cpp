@@ -6,7 +6,7 @@
 /*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:38:19 by gabo              #+#    #+#             */
-/*   Updated: 2025/08/12 16:23:45 by gabo             ###   ########.fr       */
+/*   Updated: 2025/08/12 16:30:28 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int main() {
 
     tmp = src->createMateria("ice");
     me->equip(tmp);
-	delete tmp; // Evitar memory leak
+	delete tmp;
 
 	
     tmp = src->createMateria("cure");
     me->equip(tmp);
-	delete tmp; // Evitar memory leak
+	delete tmp;
 
     ICharacter* bob = new Character("bob");
     me->use(0, *bob);
@@ -45,15 +45,15 @@ int main() {
     std::cout << "\n===== TEST 3: Inventario lleno =====" << std::endl;
 	tmp = src->createMateria("ice");
     me->equip(tmp);
-	delete tmp; // Evitar memory leak
+	delete tmp;
 	
 	tmp = src->createMateria("cure");
     me->equip(tmp);
-	delete tmp; // Evitar memory leak
+	delete tmp;
 
     tmp = src->createMateria("ice");
-	me->equip(tmp);
-	delete tmp; // Evitar memory leak
+	me->equip(tmp); // Ya esta lleno, no debería hacer nada
+	delete tmp;
 
     std::cout << "\n===== TEST 4: Uso con índice inválido =====" << std::endl;
     me->use(10, *bob); // No debe crashear

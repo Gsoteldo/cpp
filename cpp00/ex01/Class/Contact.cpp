@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 13:47:08 by gabo              #+#    #+#             */
-/*   Updated: 2025/04/10 00:57:09 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2025/08/10 19:05:08 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,50 @@
 // 	_phoneNumber = 000000000;
 // }
 
+/*
+
+class persona {
+
+	private:
+		std::string name;
+
+	public:
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
 Contact::Contact() {}
 
 Contact::Contact(
-	const std::string& firstName,
-	const std::string& lastName,
-	const std::string& nickName,
+	const std::string firstName,
+	const std::string lastName,
+	const std::string nickName,
 	const std::string phoneNumber,
-	const std::string& darkSecret
+	const std::string darkSecret
 )
 	: _firstName(firstName),
 	_lastName(lastName),
