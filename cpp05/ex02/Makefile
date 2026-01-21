@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+         #
+#    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2025/10/10 11:06:41 by gabo             ###   ########.fr        #
+#    Updated: 2026/01/21 19:02:18 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 FILES = main.cpp \
 		Bureaucrat.cpp \
 		AForm.cpp \
-		PresidentialPardonForm.cpp
+		PresidentialPardonForm.cpp \
+		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp
 
 
 OBJS = $(FILES:.cpp=.o)

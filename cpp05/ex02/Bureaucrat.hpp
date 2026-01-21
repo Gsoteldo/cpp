@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 16:32:24 by gabo              #+#    #+#             */
-/*   Updated: 2025/10/15 21:41:47 by gabo             ###   ########.fr       */
+/*   Updated: 2026/01/21 20:40:02 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ class Bureaucrat {
 		void increaseGrade();
 		void decreaseGrade();
 		void signForm(AForm &form);
-		
+		void executeForm(AForm const &form) const;
 		
 	};
 	std::ostream& operator<<(std::ostream& out, const Bureaucrat &obj);

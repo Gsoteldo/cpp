@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:44:35 by gabo              #+#    #+#             */
-/*   Updated: 2025/10/15 21:42:02 by gabo             ###   ########.fr       */
+/*   Updated: 2026/01/21 20:33:37 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,15 @@ void AForm::beSigned(const Bureaucrat &bureau) {
 	else
 		_isSigned = true;
 }
+
+void AForm::execute(Bureaucrat const & executor) const {
+	
+	if (this->_isSigned == false)
+		throw FormNotSigned();
+	if (executor.getGrade() > this->_toExecute)
+		throw GradeTooLowException();
+}
+
 
 std::ostream& operator<<(std::ostream& out, const AForm &obj) {
 	out << std::endl << "-------------------------------" << std::endl;

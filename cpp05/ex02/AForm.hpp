@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:44:54 by gabo              #+#    #+#             */
-/*   Updated: 2025/10/15 21:02:58 by gabo             ###   ########.fr       */
+/*   Updated: 2026/01/21 20:35:19 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define AFORM_HPP
 
 #include <iostream>
+#include <cstdlib>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;

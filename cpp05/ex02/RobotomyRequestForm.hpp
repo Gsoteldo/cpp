@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/09 19:47:33 by gabo              #+#    #+#             */
-/*   Updated: 2026/01/19 22:06:03 by gsoteldo         ###   ########.fr       */
+/*   Created: 2026/01/19 22:08:27 by gsoteldo          #+#    #+#             */
+/*   Updated: 2026/01/19 22:15:01 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
+
 
 #include "AForm.hpp"
 
-class PresidentialPardonForm: public AForm {
+class RobotomyRequestForm: public AForm {
 	private:
 		std::string _target;
 	public:
-		PresidentialPardonForm();
-		PresidentialPardonForm(std::string name);
-		PresidentialPardonForm(const PresidentialPardonForm &obj);
-		PresidentialPardonForm &operator=(const PresidentialPardonForm &obj);
-		~PresidentialPardonForm();
+		RobotomyRequestForm();
+		RobotomyRequestForm(std::string name);
+		RobotomyRequestForm(const RobotomyRequestForm &obj);
+		RobotomyRequestForm &operator=(const RobotomyRequestForm &obj);
+		~RobotomyRequestForm();
 
 		void execute(Bureaucrat const & executor) const;
 };
+
+
 
 #endif
