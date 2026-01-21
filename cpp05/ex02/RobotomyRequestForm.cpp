@@ -46,7 +46,7 @@ void RobotomyRequestForm::execute(Bureaucrat const& executor) const {
 	int num =  1 + (rand() % 100);
 
 	if (num % 2 == 0) {
-		std::cout << "The " << _name << " for " << _target << " was 100%% successful." << std::endl;
+		std::cout << "The " << _name << " for " << _target << " was 100% successful." << std::endl;
 	} else {
 		std::cout << "The " << _name << " for " << _target << " was failed" << std::endl;
 	}
