@@ -28,6 +28,19 @@ int ScaleConverter::detectType(const std::string &input) {
 	if (input.length() == 1 && !isdigit(input[0]) && IS_PRINTABLE(input[0])) {
 		return 0; // char
 	}
+
+	if (input.compare("nanf") == 0 || input.compare("+inff") == 0 || input.compare("-inff") == 0) {
+		return 2; // float
+	}
+	if (input.compare("nan") == 0 || input.compare("+inf") == 0 || input.compare("-inf") == 0) {
+		return 3; // double
+	}
+
+
+
+
+
+
 	if (input[0] == '-' || input[0] == '+' ) {
 		if (input.length() > 1 && isdigit(input[1])) {
 			return 1; // int
@@ -38,6 +51,9 @@ int ScaleConverter::detectType(const std::string &input) {
 	
 	return -1; // unknown
 }
+
+
+
 
 void ScaleConverter::convert(const std::string &input) {
 	// Implementation of conversion logic goes here
