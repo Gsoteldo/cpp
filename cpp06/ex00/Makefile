@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gabrielsoteldo <gabrielsoteldo@student.    +#+  +:+       +#+         #
+#    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2026/01/26 16:56:27 by gabrielsote      ###   ########.fr        #
+#    Updated: 2026/01/26 22:28:50 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

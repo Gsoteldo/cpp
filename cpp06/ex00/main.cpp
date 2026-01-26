@@ -24,10 +24,6 @@ bool checkInput(int argc, char *argv[]) {
 		std::cerr << std::endl;
 		return (false);
 	}
-
-	// if ()
-
-
 	return (true);
 }
 
