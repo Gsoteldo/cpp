@@ -123,7 +123,7 @@ void ScaleConverter::printInt(const std::string &input, int type) {
 
 	long num = static_cast<int>(strtol(input.c_str(), &endptr, 10));
 
-	   if (input.length() >= 11 || *endptr != '\0' || INT_OUT_OF_RANGE(num) || type == 4) {
+	   if (input.length() > 11 || *endptr != '\0' || INT_OUT_OF_RANGE(num) || type == 4) {
         std::cout << "int: impossible" << std::endl;
         return;
     }
