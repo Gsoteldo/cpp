@@ -6,6 +6,7 @@
 #include <cstdlib>
 # include <climits>
 # include <cfloat>
+# include <iomanip>
 
 # define IS_PRINTABLE(c) (c >= 32 && c <= 126)
 # define INT_OUT_OF_RANGE(i) (i < INT_MIN || i > INT_MAX)
@@ -30,7 +31,7 @@ class ScaleConverter {
 		static void printDouble(const std::string &input, int type);
 		static void printAll(const std::string &input, int type);
 		static void convert(const std::string &input);
-		
+
 };
 
 

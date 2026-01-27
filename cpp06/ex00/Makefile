@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
+#    By: gabrielsoteldo <gabrielsoteldo@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2026/01/26 22:28:50 by gsoteldo         ###   ########.fr        #
+#    Updated: 2026/01/27 12:03:10 by gabrielsote      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,9 @@ git:
 	@git add .
 	@git commit
 	@git push
+
+test: all
+	@./test_convert.sh
 
 re: fclean all
 

@@ -34,7 +34,6 @@ int main(int argc, char *argv[]) {
 	// char c = 127;
 	if (!checkInput(argc, argv))
 		return (1);
-
 	std::string input = argv[1];
 	ScaleConverter::convert(input);
 
