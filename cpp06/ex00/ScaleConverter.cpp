@@ -146,7 +146,7 @@ void ScaleConverter::printFloat(const std::string &input, int type) {
 
 	if (type == 0) {
 		float num = static_cast<float>(input[0]);
-		std::cout << "float: "  << num << std::endl;
+		std::cout << "float: "  << num << "f" << std::endl;
 		return ;
 	}
 
@@ -159,7 +159,7 @@ void ScaleConverter::printFloat(const std::string &input, int type) {
 		return;
 	}
 
-	if (type == 2 && input.back() == 'f'){
+	if (type == 2 && input[input.length() - 1] == 'f'){
 		trimmedInput = input.substr(0, input.length() - 1);
 	}
 	
@@ -187,7 +187,7 @@ void ScaleConverter::printDouble(const std::string &input, int type) {
 		return ;
 	}
 
-	if (type == 2 && input.back() == 'f')
+	if (type == 2 && input[input.length() - 1] == 'f')
 		trimmedInput = input.substr(0, input.length() - 1);
 
 	if (type == 4) {
@@ -196,14 +196,14 @@ void ScaleConverter::printDouble(const std::string &input, int type) {
 		return;
 	}
 
-	double num = strtod(trimmedInput.c_str(), &endptr);
+	double num = static_cast<double>(strtod(trimmedInput.c_str(), &endptr));
 
 	if (*endptr != '\0' || DOUBLE_OUT_OF_RANGE(num)) {
 		std::cout << "double: impossible" << std::endl;
 		return;
 	}
 
-	std::cout << "double: " << static_cast<double>(num) << std::endl;
+	std::cout << "double: " << num << std::endl;
 }
 
 void ScaleConverter::printAll(const std::string &input, int type) {

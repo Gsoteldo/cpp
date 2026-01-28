@@ -16,8 +16,6 @@
 
 class ScaleConverter {
 	private:
-		
-	public:
 		ScaleConverter();
 		ScaleConverter(const ScaleConverter &obj);
 		ScaleConverter &operator=(const ScaleConverter &obj);
@@ -30,6 +28,8 @@ class ScaleConverter {
 		static void printFloat(const std::string &input, int type);
 		static void printDouble(const std::string &input, int type);
 		static void printAll(const std::string &input, int type);
+		
+	public:
 		static void convert(const std::string &input);
 
 };
