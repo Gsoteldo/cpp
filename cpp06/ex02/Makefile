@@ -6,7 +6,7 @@
 #    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2026/01/28 22:43:33 by gsoteldo         ###   ########.fr        #
+#    Updated: 2026/01/29 19:11:40 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ TOTAL_FILES = $(words $(FILES))
 CLEAN = \033[2K\r
 
 
-NAME = Serializer
+NAME = RealType
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 

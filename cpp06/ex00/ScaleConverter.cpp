@@ -190,9 +190,13 @@ void ScaleConverter::printDouble(const std::string &input, int type) {
 	if (type == 2 && input[input.length() - 1] == 'f')
 		trimmedInput = input.substr(0, input.length() - 1);
 
-	if (type == 4) {
-
-			std::cout << "double: " << input << std::endl;
+	if (type == 4 ) {
+		if (input[input.length() - 1] == 'f' && input[input.length() - 2] == 'f') {
+			trimmedInput = input.substr(0, input.length() - 1);
+			std::cout << "double: " << trimmedInput << std::endl;
+			return ;
+		}
+		std::cout << "double: " << input << std::endl;
 		return;
 	}
 
