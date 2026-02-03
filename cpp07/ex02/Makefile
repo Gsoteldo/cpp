@@ -6,7 +6,7 @@
 #    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2026/02/02 18:47:57 by gsoteldo         ###   ########.fr        #
+#    Updated: 2026/02/03 18:08:58 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 FILES = main.cpp \
+		Array.cpp
 
 
 OBJS = $(FILES:.cpp=.o)
