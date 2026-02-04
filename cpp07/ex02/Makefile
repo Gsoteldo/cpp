@@ -6,7 +6,7 @@
 #    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2026/02/03 18:08:58 by gsoteldo         ###   ########.fr        #
+#    Updated: 2026/02/04 20:13:40 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,10 @@ CLEAN = \033[2K\r
 
 NAME = Array
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -g3 -I -std=c++98
 
 
 FILES = main.cpp \
-		Array.cpp
 
 
 OBJS = $(FILES:.cpp=.o)
