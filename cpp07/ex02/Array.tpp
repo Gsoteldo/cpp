@@ -67,7 +67,7 @@ void Array<T>::getValue() {
 
 
 template<typename T>
-unsigned int Array<T>::size() {
+unsigned int Array<T>::size() const {
 	
 	return (_size);
 }
@@ -92,10 +92,10 @@ T const &Array<T>::operator[](unsigned int n) const {
 
 
 
-// template<typename T>
-// std::ostream &operator<<(std::ostream& out, const T array) {
-// 	for (unsigned int i = 0; i < array.size(); i++) {
-// 		out << array[i] << " ";
-// 	}
-// 	return (out);
-// }
+template<typename T>
+std::ostream &operator<<(std::ostream& out, const Array<T> &array) {
+	for (unsigned int i = 0; i < array.size(); i++) {
+		out << array[i] << " ";
+	}
+	return (out);
+}

@@ -26,12 +26,12 @@ class Array {
 		T const &operator[](unsigned int n) const;
 		T &operator[](unsigned int n);
 
-		unsigned int size();
+		unsigned int size() const;
 		void getValue();
 	};
 
-	// template<typename T>
-	// std::ostream operator<<(std::ostream& out, const T array); 
+	template<typename T>
+	std::ostream &operator<<(std::ostream& out, const Array<T> &array); 
 	
 # include "Array.tpp"
 
