@@ -6,7 +6,7 @@
 #    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2026/02/11 11:22:53 by gsoteldo         ###   ########.fr        #
+#    Updated: 2026/02/16 10:04:27 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ CLEAN = \033[2K\r
 
 NAME = span
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 
 FILES = main.cpp \
