@@ -88,14 +88,6 @@ int Span::getMaxSize() const {
 	return (_maxSize);
 }
 
-// int Span::getShortestSpan() const {
-// 	return (_minValue);
-// }
-// int Span::getLongestSpan() const {
-
-// 	return (_maxValue);
-// }
-
 void Span::randomAddNumber(int total) {
 	srand(time(NULL));
 	for (int i = 0; i < total; i++) {

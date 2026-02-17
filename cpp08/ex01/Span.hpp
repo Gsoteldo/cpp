@@ -38,8 +38,6 @@ class Span {
 		void randomAddNumber(int total);
 
 		std::vector<int> getVect() const;
-		// int getShortestSpan() const;
-		// int getLongestSpan() const;
 		int getSize() const;
 		int getMaxSize() const;
 
