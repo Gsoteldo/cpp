@@ -18,8 +18,8 @@ bool isNumber(const std::string &tok) {
 	
 	if (tok.empty())
 		return (false);
-	if (tok[0] == '-' || tok[0] == '+')
-		i++;
+	// if (tok[0] == '-' || tok[0] == '+')
+	// 	i++;
 	for (; i < tok.size(); i++) {
 		if (!isdigit(tok[i]))
 			return (false);
@@ -69,14 +69,19 @@ void RPN::operate(char **argv) {
 	std::istringstream iss(argv[1]);
 	std::string tok;
 
+	int argumentCount = 0;
 	int leftNumber;
 	int rightNumber;
 	std::string op;
 
 	while (iss >> tok) {
-		if (isNumber(tok))
+		if (isNumber(tok) && argumentCount < 10) {
 			_stack.push(atoi(tok.c_str()));
+			argumentCount++;
+		}
 		else if (isOperator(tok)) {
+			if (_stack.size() < 2 and !isNumber(tok))
+				throw std::runtime_error("Not enough operands for the operator.");
 			op = tok;
 			rightNumber = _stack.top();
 			_stack.pop();
@@ -85,9 +90,10 @@ void RPN::operate(char **argv) {
 			
 			_stack.push(calculate(leftNumber, op,rightNumber));
 		}
-
-		// if (this->_stack.size() != 1)
-		// 	throw std::runtime_error("The user input has too many operands.");
+		else if (argumentCount >= 10)
+			throw std::runtime_error("Too many arguments. Maximum allowed is 10.");
+		else
+			throw std::runtime_error("Invalid token in the expression.");
 	}
 
 	printStack();

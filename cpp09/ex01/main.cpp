@@ -51,8 +51,14 @@ int main(int argc, char *argv[]) {
 		return (1);
 
 	RPN rpn = RPN();
+	try {
+		rpn.operate(argv);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	
-	rpn.operate(argv);
 	
 
 	return (0);
