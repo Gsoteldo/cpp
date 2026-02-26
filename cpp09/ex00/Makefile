@@ -6,7 +6,7 @@
 #    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2026/02/19 10:52:42 by gsoteldo         ###   ########.fr        #
+#    Updated: 2026/02/26 12:06:45 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 FILES = main.cpp \
-
+	BitcoinExchange.cpp
 
 OBJS = $(FILES:.cpp=.o)
 
