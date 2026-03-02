@@ -21,7 +21,7 @@ CLEAN = \033[2K\r
 
 NAME = btc
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 
 FILES = main.cpp \

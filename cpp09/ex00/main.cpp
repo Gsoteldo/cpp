@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 	{
 		BitcoinExchange btc;
 
-		btc.validateDate(static_cast<std::string>("2026-02-30"));
+		btc.processData(argv[1]);
 	}
 	catch(const std::exception& e)
 	{

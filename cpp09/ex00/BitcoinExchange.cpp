@@ -49,6 +49,13 @@ bool BitcoinExchange::validateDate(const std::string &date) {
 }
 
 
+//Debugging para mostrar que se han cargado los datos correctamente. Se puede eliminar despues
+void BitcoinExchange::printMap() {
+	for (std::map<std::string, float>::iterator it = _exchangeRates.begin(); it != _exchangeRates.end(); ++it) {
+		std::cout << "Date: " << it->first << ", Value: " << it->second << std::endl;
+	}
+}
+
 // Los datos se del archivo .csv se guardan en el mapa para que se puedan revisar despues.
 // De este archivo depende el resto del programa
 
@@ -69,18 +76,55 @@ void BitcoinExchange::loadData(const std::string &filename) {
 		std::string date;
 		float value;
 
-		ss >> date >> value;
+		std::getline(ss, date, ',');
+		ss >> value;
+
+		if (!validateDate(date))
+			throw InvalidDateException();
+		_exchangeRates[date] = value;
+	}
+
+	printMap();
+
+	file.close();
+}
+
+void BitcoinExchange::ValidateInput(const std::string &input) {
+
+	std::ifstream file(input.c_str());
+	std::string line;
+
+	if (not file)
+		throw FileNotFoundException();
+
+	std::getline(file, line); // Skip header
+
+	while (std::getline(file, line)) {
+		std::istringstream ss(line);
+		std::string date;
+		float value;
+
+		std::getline(ss, date, '|');
+		ss >> value;
 
 		if (!validateDate(date))
 			throw InvalidDateException();
 
-		_exchangeRates[date] = value;
+		if (value < 0) {
+			std::cerr << "Error: Value cannot be negative. Date: " << date << std::endl;
+			continue;
+		}
+		if (value > 1000) {
+			std::cerr << "Error: Value cannot be greater than 1000. Date: " << date << std::endl;
+			continue;
+		}
 	}
 
+	file.close();
 }
 
-void BitcoinExchange::getInput(const std::string &input) {
-	(void)input;
-}
+void BitcoinExchange::processData(const std::string &input) {
+	this->loadData("data.csv");
+	this->ValidateInput(input);
 
-void BitcoinExchange::processData() {}
+}

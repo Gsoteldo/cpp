@@ -35,8 +35,10 @@ class BitcoinExchange {
 
 
 		void loadData(const std::string &filename);
-		void getInput(const std::string &input);
-		void processData();
+		void ValidateInput(const std::string &input);
+		void processData(const std::string &input);
+
+		void printMap();
 };
 
 #endif
