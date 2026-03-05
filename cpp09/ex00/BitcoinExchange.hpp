@@ -5,6 +5,7 @@
 # include <string>
 # include <map>
 # include <cstring>
+# include <cstdlib>
 # include <stdexcept>
 # include <fstream>
 # include <sstream>
@@ -15,6 +16,7 @@ class BitcoinExchange {
 		std::map<std::string, float> _exchangeRates;
 
 		bool validateDate(const std::string &date);
+		bool validateValue(const std::string &valueStr, float &value);
 
 	public:
 
@@ -37,6 +39,7 @@ class BitcoinExchange {
 		void loadData(const std::string &filename);
 		void ValidateInput(const std::string &input);
 		void processData(const std::string &input);
+		float getValueByDate(const std::string &date);
 
 		void printMap();
 };

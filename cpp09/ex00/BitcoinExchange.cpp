@@ -41,11 +41,35 @@ bool BitcoinExchange::validateDate(const std::string &date) {
 	if (mktime(&tm) == -1 || tm.tm_year not_eq year || tm.tm_mon not_eq month || tm.tm_mday not_eq day)
 		return (false);
 
-	// std::cout << "Date is valid: " << (tm.tm_year > 0) << std::endl;
-	// std::cout << "Parsed date: " << (tm.tm_year + 1900) << "-" << (tm.tm_mon ) << "-" << tm.tm_mday << std::endl;
-
 	return (true);
+}
 
+
+bool BitcoinExchange::validateValue(const std::string &valueStr, float &value) {
+//TODO:  Comprobar con numeros extra que no son numericos
+	char	*endptr;
+	for (size_t i = 0; i < valueStr.length(); i++) {
+		if ((!isdigit(valueStr[i]) and valueStr[i] not_eq 'e' ) and valueStr[i] != '.') {
+			std::cerr << "Error: Invalid value format. Expected a numeric value." << std::endl;
+			return (false);
+		}
+	}
+
+	value = strtof(valueStr.c_str(), &endptr);
+
+	if (endptr == valueStr.c_str()) {
+		std::cerr << "Error: Invalid value format. Expected a numeric value." << std::endl;
+		return (false);
+	}
+	if (value < 0) {
+		std::cerr << "Error: Value cannot be negative." << std::endl;
+		return (false);
+	}
+	if (value > 1000) {
+		std::cerr << "Error: Value cannot be greater than 1000." << std::endl;
+		return (false);
+	}
+	return (true);
 }
 
 
@@ -79,14 +103,26 @@ void BitcoinExchange::loadData(const std::string &filename) {
 		std::getline(ss, date, ',');
 		ss >> value;
 
-		if (!validateDate(date))
+		if (not validateDate(date))
 			throw InvalidDateException();
 		_exchangeRates[date] = value;
 	}
 
-	printMap();
+	// printMap();
 
 	file.close();
+}
+
+float BitcoinExchange::getValueByDate(const std::string &date) {
+	std::map<std::string, float>::iterator it;
+
+	it = _exchangeRates.lower_bound(date);
+	if (it == _exchangeRates.end() or it->first != date) {
+		if (it == _exchangeRates.begin())
+			throw InvalidDateException();
+		--it;
+	}
+	return (it->second);
 }
 
 void BitcoinExchange::ValidateInput(const std::string &input) {
@@ -103,21 +139,36 @@ void BitcoinExchange::ValidateInput(const std::string &input) {
 		std::istringstream ss(line);
 		std::string date;
 		float value;
+		size_t separator = line.find(" | ");
+		std::string valueStr;
 
-		std::getline(ss, date, '|');
-		ss >> value;
+		if (separator != std::string::npos) {
+			date = line.substr(0, separator);
+			valueStr = line.substr(separator + 3);
+		}
 
-		if (!validateDate(date))
-			throw InvalidDateException();
+		std::istringstream(valueStr) >> value;
 
-		if (value < 0) {
-			std::cerr << "Error: Value cannot be negative. Date: " << date << std::endl;
+		if (separator not_eq std::string::npos) {
+			date = line.substr(0, separator);
+		} else {
+			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;
 		}
-		if (value > 1000) {
-			std::cerr << "Error: Value cannot be greater than 1000. Date: " << date << std::endl;
+
+		if (not validateDate(date)) {
+
+			std::cerr << "Error: bad input => " << date << std::endl;
 			continue;
 		}
+
+		if (not validateValue(valueStr, value)) {
+			continue;
+		}
+
+		float rate = getValueByDate(date);
+		std::cout << date << " => " << value
+				<< " = " << value * rate << std::endl;
 	}
 
 	file.close();
@@ -126,5 +177,5 @@ void BitcoinExchange::ValidateInput(const std::string &input) {
 void BitcoinExchange::processData(const std::string &input) {
 	this->loadData("data.csv");
 	this->ValidateInput(input);
-
+	
 }
