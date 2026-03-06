@@ -18,7 +18,7 @@ PmergeMe::PmergeMe(const PmergeMe &obj) {
 }
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &obj) {
-	if (this != &obj) {
+	if (this not_eq &obj) {
 		_vector = obj._vector;
 		_deque = obj._deque;
 	}
@@ -35,13 +35,39 @@ T PmergeMe::Jacobsthal(size_t size) {
 	for (size_t i = 2; i < size; ++i) {
 		size_t next = jacobsthal[i - 1] + 2 * jacobsthal[i - 2];
 		jacobsthal.push_back(next);
+		std::cout << "jac: " << next << std::endl;
 	}
+
 
 	return (jacobsthal);
 }
 
-// 	return (jacobsthal);
-// }
+template <typename T>
+void PmergeMe::pairElements(T& pairs, int &straggler, bool &hasStraggler) {
+	for (size_t i = 0; i < _vector.size(); i += 2) {
+		if (i + 1 < _vector.size()) {
+			int first = _vector[i];
+			int second = _vector[i + 1];
+			if (first > second) {
+				std::swap(first, second);
+			}
+			pairs.push_back(std::make_pair(first, second));
+		} else {
+			straggler = _vector[i];
+			hasStraggler = true;
+		}
+	}
+}
+
+template <typename T>
+void PmergeMe::splitChains() {
+
+}
+
+template <typename T>
+void PmergeMe::insertSorted() {
+
+}
 
 void PmergeMe::sortVector() {
 	// Sorting logic will be implemented here
@@ -53,7 +79,7 @@ void PmergeMe::sortVector() {
 	int straggler;
 	bool hasStraggler = false;
 
-
+	// pairElements(pairs, straggler, hasStraggler);
 	for (size_t i = 0; i < _vector.size(); i += 2) {
 		if (i + 1 < _vector.size()) {
 			int first = _vector[i];
@@ -95,12 +121,15 @@ void PmergeMe::sortVector() {
 		sortedChain.insert(pos, straggler);
 	}
 	_vector = sortedChain;
-	//  printVector(sortedChain);
+
+	printVector(pendChain);
+	printVector(mainChain);
+	printVector(sortedChain);
 }
+
 
 void PmergeMe::sortDeque() {
 	// Sorting logic will be implemented here
-		// Sorting logic will be implemented here
 	std::deque<std::pair<int, int> > pairs;
 	std::deque<int> pendChain;
 	std::deque<int> mainChain;
@@ -163,7 +192,7 @@ void PmergeMe::run() {
 	durationVector = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 
 	start = clock();
-	sortDeque();
+	// sortDeque();
 	end = clock();
 	durationDeque = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 	std::cout << "After: " ;
@@ -171,11 +200,6 @@ void PmergeMe::run() {
 	std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector: " << durationVector << " us" << std::endl;
 	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque: " << durationDeque << " us" << std::endl;
 }
-
-// Before: 141 79 526 321 [...]
-// After: 79 141 321 526 [...]
-// Time to process a range of 3000 elements with std::[..] : 62.14389 us
-// Time to process a range of 3000 elements with std::[..] : 69.27212 us
 
 void PmergeMe::printVector(std::vector<int> vec) {
 	if (vec.empty()) {

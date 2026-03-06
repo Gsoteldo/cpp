@@ -4,6 +4,8 @@
 # include <vector>
 # include <deque>
 # include <iostream>
+# include <climits>
+# include <cstdlib>
 
 class PmergeMe {
 	private:
@@ -12,6 +14,15 @@ class PmergeMe {
 
 		template <typename T>
 		T Jacobsthal(size_t size);
+
+		template <typename T>
+		void pairElements(T& pairs, int &straggler, bool &hasStraggler);
+
+		template <typename T>
+		void splitChains();
+
+		template <typename T>
+		void insertSorted();
 		
 		void sortVector();
 		void sortDeque();
