@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
+#    By: gabrielsoteldo <gabrielsoteldo@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 19:38:47 by gsoteldo          #+#    #+#              #
-#    Updated: 2026/02/19 10:53:04 by gsoteldo         ###   ########.fr        #
+#    Updated: 2026/03/06 01:30:36 by gabrielsote      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 FILES = main.cpp \
+	PmergeMe.cpp
 
 
 OBJS = $(FILES:.cpp=.o)
