@@ -19,12 +19,12 @@ bool checkArguments(int argc, char *argv[]) {
 			std::cerr << "Error: Invalid argument '" << argv[i] << "'." << std::endl;
 			return (false);
 		}
-		int tmp = std::strtol(argv[i], NULL, 10);
+		long tmp = std::strtol(argv[i], NULL, 10);
 		if (tmp < 0) {
 			std::cerr << "Error: Negative number '" << argv[i] << "' is not allowed." << std::endl;
 			return (false);
 		} else if (tmp > INT_MAX) {
-			std::cerr << "Error: Number '" << argv[i] << "' exceeds the maximum allowed value." << std::endl;
+			std::cerr << "Error: Number '" << argv[i] << "' exceeds the maximum int allowed value." << std::endl;
 			return (false);
 		}
 	}

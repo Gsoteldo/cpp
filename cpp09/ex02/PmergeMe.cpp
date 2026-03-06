@@ -35,7 +35,6 @@ T PmergeMe::Jacobsthal(size_t size) {
 	for (size_t i = 2; i < size; ++i) {
 		size_t next = jacobsthal[i - 1] + 2 * jacobsthal[i - 2];
 		jacobsthal.push_back(next);
-		std::cout << "jac: " << next << std::endl;
 	}
 
 
@@ -59,15 +58,16 @@ void PmergeMe::pairElements(T& pairs, int &straggler, bool &hasStraggler) {
 	}
 }
 
-template <typename T>
-void PmergeMe::splitChains() {
+template <typename T, typename D>
+void PmergeMe::splitChains(T& pendChain, T& mainChain, D pairs) {
+	for (size_t i = 0; i < pairs.size(); i++)
+	{
+	    pendChain.push_back(pairs[i].first);
+	    mainChain.push_back(pairs[i].second);
+	}
 
 }
 
-template <typename T>
-void PmergeMe::insertSorted() {
-
-}
 
 void PmergeMe::sortVector() {
 	// Sorting logic will be implemented here
@@ -79,41 +79,35 @@ void PmergeMe::sortVector() {
 	int straggler;
 	bool hasStraggler = false;
 
-	// pairElements(pairs, straggler, hasStraggler);
-	for (size_t i = 0; i < _vector.size(); i += 2) {
-		if (i + 1 < _vector.size()) {
-			int first = _vector[i];
-			int second = _vector[i + 1];
-			if (first > second) {
-				std::swap(first, second);
-			}
-			pairs.push_back(std::make_pair(first, second));
-		} else {
-			straggler = _vector[i];
-			hasStraggler = true;
-		}
-	}
-	
+	pairElements(pairs, straggler, hasStraggler);
 
-	for (size_t i = 0; i < pairs.size(); i++)
+	splitChains(pendChain, mainChain, pairs);
+
+
+	sortedChain.push_back(mainChain[0]);
+	for (size_t i = 1; i < mainChain.size(); ++i)
 	{
-	    pendChain.push_back(pairs[i].first);
-	    mainChain.push_back(pairs[i].second);
+	    pos = std::lower_bound(sortedChain.begin(), sortedChain.end(), mainChain[i]);
+	    sortedChain.insert(pos, mainChain[i]);
 	}
 
-	 sortedChain.push_back(mainChain[0]);
-	 for (size_t i = 1; i < mainChain.size(); ++i)
-	 {
-	     pos = std::lower_bound(sortedChain.begin(), sortedChain.end(), mainChain[i]);
-	     sortedChain.insert(pos, mainChain[i]);
-	 }
-	 std::vector<size_t> jac = Jacobsthal<std::vector<size_t> >(pendChain.size());
-	 for (size_t i = 0; i < jac.size(); ++i)
-	{
-    	if (jac[i] >= pendChain.size()) continue; // ignorar índices inválidos
-    	int val = pendChain[jac[i]];
-    	pos = std::lower_bound(sortedChain.begin(), sortedChain.end(), val);
-    	sortedChain.insert(pos, val);
+	std::vector<bool> inserted(pendChain.size(), false);
+	std::vector<size_t> jac = Jacobsthal<std::vector<size_t> >(pendChain.size());
+	for (size_t i = 0; i < jac.size(); ++i) {
+    	if (jac[i] < pendChain.size() && !inserted[jac[i]]) {
+    	    int val = pendChain[jac[i]];
+    	    pos = std::lower_bound(sortedChain.begin(), sortedChain.end(), val);
+    	    sortedChain.insert(pos, val);
+    	    inserted[jac[i]] = true;
+    	}
+	}
+// Inserta los que faltan
+	for (size_t i = 0; i < pendChain.size(); ++i) {
+    	if (!inserted[i]) {
+    	    int val = pendChain[i];
+    	    pos = std::lower_bound(sortedChain.begin(), sortedChain.end(), val);
+    	    sortedChain.insert(pos, val);
+    	}
 	}
 
 	if (hasStraggler) {
@@ -122,9 +116,6 @@ void PmergeMe::sortVector() {
 	}
 	_vector = sortedChain;
 
-	printVector(pendChain);
-	printVector(mainChain);
-	printVector(sortedChain);
 }
 
 
@@ -139,26 +130,9 @@ void PmergeMe::sortDeque() {
 	bool hasStraggler = false;
 
 
-	for (size_t i = 0; i < _deque.size(); i += 2) {
-		if (i + 1 < _deque.size()) {
-			int first = _deque[i];
-			int second = _deque[i + 1];
-			if (first > second) {
-				std::swap(first, second);
-			}
-			pairs.push_back(std::make_pair(first, second));
-		} else {
-			straggler = _deque[i];
-			hasStraggler = true;
-		}
-	}
-	
+	pairElements(pairs, straggler, hasStraggler);
 
-	for (size_t i = 0; i < pairs.size(); i++)
-	{
-	    pendChain.push_back(pairs[i].first);
-	    mainChain.push_back(pairs[i].second);
-	}
+	splitChains(pendChain, mainChain, pairs);
 
 	 sortedChain.push_back(mainChain[0]);
 	 for (size_t i = 1; i < mainChain.size(); ++i)
@@ -166,15 +140,24 @@ void PmergeMe::sortDeque() {
 	     pos = std::lower_bound(sortedChain.begin(), sortedChain.end(), mainChain[i]);
 	     sortedChain.insert(pos, mainChain[i]);
 	 }
+	 std::deque<bool> inserted(pendChain.size(), false);
 	 std::deque<size_t> jac = Jacobsthal<std::deque<size_t> >(pendChain.size());
-	 for (size_t i = 0; i < jac.size(); ++i)
-	{
-    	if (jac[i] >= pendChain.size()) continue; // ignorar índices inválidos
-    	int val = pendChain[jac[i]];
-    	pos = std::lower_bound(sortedChain.begin(), sortedChain.end(), val);
-    	sortedChain.insert(pos, val);
+	for (size_t i = 0; i < jac.size(); ++i) {
+    if (jac[i] < pendChain.size() && !inserted[jac[i]]) {
+        int val = pendChain[jac[i]];
+        pos = std::lower_bound(sortedChain.begin(), sortedChain.end(), val);
+        sortedChain.insert(pos, val);
+        inserted[jac[i]] = true;
+    }
+}
+	// Inserta los que faltan
+	for (size_t i = 0; i < pendChain.size(); ++i) {
+    	if (!inserted[i]) {
+        	int val = pendChain[i];
+        	pos = std::lower_bound(sortedChain.begin(), sortedChain.end(), val);
+        	sortedChain.insert(pos, val);
+    	}
 	}
-
 	if (hasStraggler) {
 		pos = std::lower_bound(sortedChain.begin(), sortedChain.end(), straggler);
 		sortedChain.insert(pos, straggler);
@@ -192,11 +175,14 @@ void PmergeMe::run() {
 	durationVector = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 
 	start = clock();
-	// sortDeque();
+	sortDeque();
 	end = clock();
 	durationDeque = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
-	std::cout << "After: " ;
+	std::cout << "After(Vector): " ;
 	printVector(_vector);
+	std::cout << "After(Deque): " ;
+	printDeque(_deque);
+
 	std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector: " << durationVector << " us" << std::endl;
 	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque: " << durationDeque << " us" << std::endl;
 }

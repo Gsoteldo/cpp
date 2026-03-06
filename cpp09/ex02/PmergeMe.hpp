@@ -18,11 +18,9 @@ class PmergeMe {
 		template <typename T>
 		void pairElements(T& pairs, int &straggler, bool &hasStraggler);
 
-		template <typename T>
-		void splitChains();
+		template <typename T, typename D>
+		void splitChains(T& pendChain, T& mainChain, D pairs);
 
-		template <typename T>
-		void insertSorted();
 		
 		void sortVector();
 		void sortDeque();
